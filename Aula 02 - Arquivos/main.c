@@ -22,7 +22,7 @@ Agenda* Agenda_create(){
     }return nova;
 }
 char Agenda_add(Agenda* A, Contato* c){
-    if((A->count +1) <+ A->MAX){
+    if((A->count +1) < A->MAX){
         A->contatos[A->count++] = c;
         return 1;
     } return 0;
@@ -31,7 +31,7 @@ char Agenda_add(Agenda* A, Contato* c){
 void Agenda_print(Agenda* A, FILE* out){
     int i=0;
     for(;i<A->count; i++){
-        fprintf(out, "%s, %s\n", A->contatos[i]->nome, A->contatos[i]->telefone);
+        fprintf(out, "%s, %s\n", (*A->contatos[i]).nome, A->contatos[i]->telefone);
         //printf("%s, %s\n", A->contatos[i]->nome, A->contatos[i]->telefone);
     }
 }
