@@ -46,9 +46,6 @@ int GDList_insere_o(GDList* L, void* info, unsigned int size, int (*cmp)(void*, 
       aux =  aux->prox;
     if(cmp(aux->info, info) < 0){
       //inserir após pois minha info é menor que a info que desejo inserir
-      novo->prox = aux->prox;
-      if(aux->prox != NULL)
-        aux->prox->ant = novo;
       aux->prox = novo;
       novo->ant = aux;
     }else{

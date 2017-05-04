@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "GDList.h"
-#include <assert.h>
+#include <stdlib.h>
 
 int comp_int(void* s1, void* s2){
   int *p1 = (int*) s1,
@@ -39,19 +39,16 @@ int main(){
   int sizeV = 5, i;
   void (*fprint)(void*) = print_int;
   char* str = "12x^3+(-5)x^4";
-  char *token, *token2, *string, *tofree;
+  char *token, *token2;
 
-   tofree = string = strdup(str);
-   assert(string != NULL);
-   while ((token = strsep(&string, "+")) != NULL)
+  token = strtok(str, "+");
+   while (token != NULL)
    {
       printf("%s\n", token);
-      while((token2 = strsep(&token, "x")) != NULL)
-        printf("%s\n", token2);
-
+      token = strtok(NULL, "+");
+      //while((token2 = strtok(token, "x")) != NULL)
+      //  printf("%s\n", token2);
    }
-
-   free(tofree);
    exit(0);
   GDList *L1 = GDList_create();
   for(i=0; i < sizeV; i++){
